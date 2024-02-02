@@ -21,4 +21,6 @@ typedef struct student_info{
 void add_begin(STI**);
 void print_node(STI*);
 void add_end(STI**);
-    
+void add_middle(STI**);
+void count_node(STI*);
+void save_file(STI*);

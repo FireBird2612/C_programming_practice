@@ -24,3 +24,5 @@ void add_end(STI**);
 void add_middle(STI**);
 void count_node(STI*);
 void save_file(STI*);
+void read_file(STI**);
+

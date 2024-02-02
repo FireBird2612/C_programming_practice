@@ -44,6 +44,10 @@ int main()
         case 6:
             save_file(headptr);
             break;
+    
+        case 7:
+            read_file(&headptr);
+            break;
 
         case 16:
             exit(0);
@@ -171,4 +175,33 @@ void save_file(STI *headptr)
         }
         fclose(fp);
     }
+}
+
+void read_file(STI **headptr){
+
+    FILE *fp = fopen("record.txt", "r");
+    if(fp == NULL){
+        printf("Failed to open the file!\n");
+        return;
+    }
+    
+    STI *last_node, *new_node;
+    
+    while(1){
+        new_node = calloc(1, sizeof(STI));
+        if((fscanf(fp, "%s%d%g", new_node->name, &new_node->rollno, &new_node->marks)) == EOF){
+            break;
+        }
+
+        if(*headptr == 0){
+            *headptr = new_node;
+        }
+        else{
+            last_node = *headptr;
+            while(last_node->next){
+                last_node = last_node->next;
+            }
+            last_node->next = new_node;
+        }   
+    } 
 }
